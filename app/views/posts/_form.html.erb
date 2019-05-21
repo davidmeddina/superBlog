@@ -1,0 +1,22 @@
+
+<% if @post.errors.any? %>
+<ul>
+  <% @post.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @post do |f| %>
+
+<%= f.label :title, "Titulo" %>
+<%= f.text_field :title %>
+<br>
+<%= f.label :content, "Descripción" %>
+<%= f.text_area :content %>
+<br>
+<%= f.label :category, "Category" %>
+<%= f.collection_select(:category_id, Category.all, :id, :name, {prompt: "Escoja una categoría"}, {class: "select-drop"})%>
+<br>
+<%= f.submit %>
+<% end %>

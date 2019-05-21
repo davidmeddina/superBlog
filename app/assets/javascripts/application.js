@@ -16,4 +16,11 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+
+
+//= jquery/jquery-3.2.1.min.js
+//= select2/select2.min.js
+
+//= main.js
+
 //= require_tree .

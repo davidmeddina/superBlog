@@ -4,8 +4,13 @@
   <p><%= post.title %></p>
   <p><%= post.content %></p>
   <%= link_to  "Ver post", post_path(post)  %>
-  <%= link_to  "Editar", post_path(post)  %>
-  <%= link_to  "Eliminar", post_path(post), method: :delete, data: {confirm: "Está seguro de eliminar este artículo?"}  %>
+  <% if current_user %>
+    <%= link_to  "Editar", post_path(post)  %>
+    <%= link_to  "Eliminar", post_path(post), method: :delete, data: {confirm: "Está seguro de eliminar este artículo?"}  %>
+  <% end %>
   <% end %>
 <br>
+
+<% if user_signed_in? %>
 <%= link_to  "Crear post", new_post_path %>
+<% end %>

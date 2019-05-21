@@ -5,7 +5,10 @@
 <p>Categoria: <%= @post.category.name %></p>
 
 <%= link_to  "Volver al home", posts_path  %> 
-<% if current_user %>
-| <%= link_to  "Editar", edit_post_path(@post) %> |
-  <%= link_to  "Eliminar", post_path(@post), method: :delete, data: {confirm: "Está seguro de eliminar este artículo?"}  %>
+<% if user_signed_in? %>
+  <% if current_user.id == @post.user.id %>
+  | <%= link_to  "Editar", edit_post_path(@post) %> |
+    <%= link_to  "Eliminar", post_path(@post), method: :delete, data: {confirm: "Está seguro de eliminar este artículo?"}  %>
+  <% end %>
 <% end %>
+

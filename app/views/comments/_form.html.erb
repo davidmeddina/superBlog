@@ -1,0 +1,19 @@
+<!-- <% if @post.errors.any? %>
+<ul>
+  <% @post.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %> -->
+
+<%= form_for ([@post, @post.comments.build]) do |f| %>
+
+<!--
+collection.build(attributes = {}, …) Returns one or more new objects of the collection type that have been instantiated with attributes and linked to this object
+through a foreign key, but have not yet been saved. Note: This only works if an associated object already exists, not if it‘s nil!
+-->
+
+<%= f.text_area :content, placeholder: "Escribir comentario..." %>
+<br>
+<%= f.submit %>
+<% end %>

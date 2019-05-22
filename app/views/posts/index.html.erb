@@ -3,7 +3,7 @@
 <% @posts.each do |post| %>
   <p><%= post.title %></p>
   <p><%= post.content %></p>
-  <p><%= time_ago_in_words(post.created_at) %> ago, byCreate by <%= post.user.username %></p>
+  <p><%= time_ago_in_words(post.created_at) %> ago, Create by <%= post.user.username %></p>
 
   <%= link_to  "Ver post", post_path(post)  %>
   <% if user_signed_in? %>

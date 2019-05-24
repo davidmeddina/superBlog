@@ -10,10 +10,21 @@
   </head>
 
   <body>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     
+    <% flash.each do |key, value| %>
+   <div class="alerta">
+    <div class="<%= flash_class(key) %>">
+      <%= value %>
+    </div>
+    <% end %>
+   </div>
+    
+ 
     <%= yield %>
+
+  <script>
+    $(".alert").fadeIn(500).css("opacity", "0.85").delay(6000).slideUp(1000);
+    $(".alerta").on('click', '.alert', function () { $(this).remove() })
+  </script>
   </body>
 </html>

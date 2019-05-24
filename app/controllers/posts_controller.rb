@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     
     if @post.save
-      flash[:notice] = "El artículo se creo"
+      flash[:success] = "El artículo se creo"
       redirect_to posts_path
     else
       render :new
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:notice] = "El artículo fue editado correctamente"
+      flash[:success] = "El artículo fue editado correctamente"
       redirect_to post_path(@post)
     else
       render :new
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:notice] = "El post se eliminó correctamente"
+    flash[:success] = "El post se eliminó correctamente"
     redirect_to posts_path
   end
 

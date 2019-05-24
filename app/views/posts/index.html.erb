@@ -2,7 +2,11 @@
 
 <% @posts.each do |post| %>
   <p><%= post.title %></p>
-  <p><%= post.content %></p>
+  <% if post.content.length > 250 %>
+    <p><%= truncate(post.content, length: 250) %></p>
+  <% else %>
+    <%= post.content %>
+  <% end %>
   <p><%= time_ago_in_words(post.created_at) %> ago, Create by <%= post.user.username %></p>
 
   <%= link_to  "Ver post", post_path(post)  %>

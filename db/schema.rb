@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_041203) do
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
-
+  
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "category_id"

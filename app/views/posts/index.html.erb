@@ -7,7 +7,7 @@
   <% else %>
     <%= post.content %>
   <% end %>
-  <p><%= time_ago_in_words(post.created_at) %> ago, Create by <%= post.user.username %></p>
+  <p><%= time_ago_in_words(post.created_at) %> atrás, Creado por <%= post.user.username %></p>
 
   <%= link_to  "Ver post", post_path(post)  %>
   <% if user_signed_in? %>
@@ -30,4 +30,3 @@
 <% else %>
 <%= link_to  "Logout", destroy_user_session_path, method: :delete %>
 <% end %>
-

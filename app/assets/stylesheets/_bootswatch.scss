@@ -34,7 +34,7 @@ $border-radius-sm-sketchy: 255px 25px 225px 25px/25px 225px 25px 255px;
 
   &-brand {
     font-family: $headings-font-family;
-    font-weight: normal;
+    font-weight: bold;
     text-decoration: none;
   }
 }
@@ -244,7 +244,7 @@ select.form-control {
   }
 }
 
-.nav-pills .nav-link, {
+.nav-pills .nav-link {
   border-radius: $border-radius-sketchy;
 }
 

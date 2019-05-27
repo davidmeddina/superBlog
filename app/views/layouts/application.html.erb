@@ -11,12 +11,12 @@
 
   <body>
     
-    <%= render  "layouts/navbar" %>
+    <%= render  "layouts/navbar"%>
     
     <% flash.each do |key, value| %>
-   <div class="alerta">
+   <div class="msg-alert">
     <div class="<%= flash_class(key) %>">
-      <%= value %>
+      <p class="mb-0"><%= value %></p> 
     </div>
     <% end %>
    </div>
@@ -25,7 +25,7 @@
 
   <script>
     $(".alert").fadeIn(500).css("opacity", "0.85").delay(6000).slideUp(1000);
-    $(".alerta").on('click', '.alert', function () { $(this).remove() })
+    $(".msg-alert").on('click', '.alert', function () { $(this).remove() })
   </script>
   </body>
 </html>

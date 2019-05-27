@@ -1,22 +1,52 @@
+<div class="container-fluid my-5">
+  <div class="row">
 
-<% if @post.errors.any? %>
-<ul class="alert alert-danger">
-  <% @post.errors.full_messages.each do |message| %>
-  <li><%= message %></li>
-  <% end %>
-</ul>
-<% end %>
+    <div class="col-md">
+      1 od 3
+    </div>
 
-<%= form_for @post do |f| %>
+    <div class="col-md-8">
+      <div class="mx-2">
+      <%= form_for @post do |f| %>
+        
+      <div>
+        <% if @post.errors.any? %>
+        <ul class="alert alert-danger">
+          <h2>Error!</h2>
+          <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+      
+      <div class="form-group">
+          <%= f.label :title, "Titulo", class:"form-check-label" %>
+          <%= f.text_field :title, class:"form-control", placeholder:"Escribe tu titulo aquí" %>
+        </div>
 
-<%= f.label :title, "Titulo" %>
-<%= f.text_field :title %>
-<br>
-<%= f.label :content, "Descripción" %>
-<%= f.text_area :content %>
-<br>
-<%= f.label :category, "Category" %>
-<%= f.collection_select(:category_id, Category.all, :id, :name, {prompt: "Escoja una categoría"}, {class: "select-drop"})%>
-<br>
-<%= f.submit %>
-<% end %>
+        <div class="form-group">
+          <%= f.label :content, "Post", class:"form-check-label" %>
+          <%= f.text_area :content, class:"form-control", placeholder:"Escribe el cuerpo de tu post aquí", rows:"10"  %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :category, "Categoria" %>
+          <%= f.collection_select(:category_id, Category.all, :id, :name, {prompt: "Escoja una categoría para tu post"}, {class: "custom-select"})%>
+        </div>
+
+        <%= f.submit "Publicar!", class:"btn btn-outline-warning btn-lg float-right" %>
+        <% end %>
+
+      </div>
+    </div>
+
+    <div class="col-md">
+      3 of 3
+    </div>
+  </div>
+
+
+
+
+

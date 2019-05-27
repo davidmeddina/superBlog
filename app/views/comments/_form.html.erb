@@ -13,7 +13,7 @@ collection.build(attributes = {}, …) Returns one or more new objects of the co
 through a foreign key, but have not yet been saved. Note: This only works if an associated object already exists, not if it‘s nil!
 -->
 
-<%= f.text_area :content, placeholder: "Escribir comentario..." %>
+<%= f.text_area :content, class:"form-control", placeholder: "Escribir comentario..." %>
 <br>
-<%= f.submit %>
+<%= f.submit "Comentar!", class:"btn btn-success float-right"%>
 <% end %>

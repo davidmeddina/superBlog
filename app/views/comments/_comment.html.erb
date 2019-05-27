@@ -1,1 +1,5 @@
-<p><%= comment.content %> <em>By <%= comment.user.username %></em></p>
+<div class="my-4 bg-hint">
+  <p class="text-secondary"><%= comment.content %></p>
+  <!-- <p><span class="text-muted float-right"><em></em></span></p> -->
+  <p class="text-muted text-right"><%= comment.user.username %></p>
+</div>

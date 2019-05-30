@@ -32,6 +32,7 @@
       <%= link_to  "Registrarse", new_user_registration_path, class:"btn btn-secondary my-2 my-sm-0"  %>
       <%= link_to  "Login", new_user_session_path, class:"btn btn-secondary my-2 my-sm-0" %>
       <% else %>
+      <%= link_to  "Crear post", new_post_path, class:"btn btn-success" %>
       <%= link_to  "Logout", destroy_user_session_path, method: :delete, class:"btn btn-secondary my-2 my-sm-0" %>
       <% end %>
     </div>

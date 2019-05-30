@@ -1,25 +1,36 @@
-<h1>SuperBlog</h1>
+<div class="container-fluid my-5">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 px-5">
+      <div>
+        <h1 class="text-center bg-warning">Posts + recientes</h1>
 
-<% @posts.each do |post| %>
-  <p><%= post.title %></p>
-  <% if post.content.length > 250 %>
-    <p><%= truncate(post.content, length: 250) %></p>
-  <% else %>
-    <%= post.content %>
-  <% end %>
-  <p><%= time_ago_in_words(post.created_at) %> atrás, Creado por <%= post.user.username %></p>
-
-  <%= link_to  "Ver post", post_path(post)  %>
-  <% if user_signed_in? %>
-    <% if current_user.id == post.user.id %>
-      <%= link_to  "Editar", post_path(post)  %>
-      <%= link_to  "Eliminar", post_path(post), method: :delete, data: {confirm: "Está seguro de eliminar este artículo?"}  %>
-    <% end %>
-  <% end %>
-  <% end %>
-<br>
-
-<% if user_signed_in? %>
-<%= link_to  "Crear post", new_post_path %>
-<% end %>
-
+        <div class="my-5">
+          <% @posts.each do |post| %>
+          <div class="my-4">
+            <!-- <%= link_to  post_path(post) do %> -->
+              <h3><strong><%= post.title %></strong></h3>
+            <!-- <% end %> -->
+            <p class="pl-2 mt-2 mb-3"><%= truncate(post.content, length: 250) %></p>
+            
+            <p class="d-inline"><%= time_ago_in_words(post.created_at) %> atrás, Por <%= post.user.username %></p>
+            
+            <div class="my-2 float-right">
+              <% if user_signed_in? %>
+                <% if current_user.id == post.user.id %>
+                <%= link_to  (fa_icon "eraser 2x"), post_path(post), method: :delete, data: {confirm: "Está seguro de eliminar este artículo?"}  %>
+                <%= link_to  (fa_icon "pencil 2x"), edit_post_path(post)  %>
+                <% end %>
+              <% end %>
+              <%= link_to (fa_icon "eye 2x"), post_path(post)%>
+            </div>            
+            <% end %>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

@@ -1,5 +1,20 @@
-<div class="my-4 bg-hint">
-  <p class="text-secondary"><%= comment.content %></p>
-  <!-- <p><span class="text-muted float-right"><em></em></span></p> -->
-  <p class="text-muted text-right"><%= comment.user.username %></p>
+<div class="container-fluid my-4">
+  <div class="row">
+    <div class="col-md-2 mx-auto mt-1">
+      <%= image_tag gravatar_url(comment.user.email, 60), alt: "", class:"rounded-circle mx-auto d-block" %>
+    </div>
+    <div class="col-md-10  bg-hint pl-2">
+      <p class="text-muted text-left"><%= comment.user.username %> escribió:</p>
+      <p class="text-secondary"><%= comment.content %></p>
+      <!-- <p><span class="text-muted float-right"><em></em></span></p> -->
+      <% if user_signed_in? %>
+      <% if current_user.id == comment.user.id %>
+      <%= link_to (fa_icon "eraser"), [comment.post, comment], method: "delete", data:{ confirm: "Estás seguro de eliminar el comentario?"}, class:"float-right m-1" %>
+      <%= link_to (fa_icon "pencil"), edit_post_comment_path(@post, comment) , class:"float-right m-1" %>
+      <% end %>
+  <% end %>
+
+    </div>
+  </div>
+
 </div>

@@ -2,11 +2,13 @@
   <div class="row my-5">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      <div class="jumbotron mt-5 mx-auto w-75">
-
-        <h2 class="text-center"><strong>Registarme</strong></h2>
+      <div class="jumbotron bg-orange mt-5 mx-auto w-75">
+        
+        <h2 class="text-center"><strong>Registrarme</strong></h2>
         <div class="my-2">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
           <div class="form-group">
             <%= f.label :email, "Correo" %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
@@ -15,14 +17,14 @@
           <div class="form-group">
             <%= f.label :password, "Contraseña" %>
             <% if @minimum_password_length %>
-            <em class="text-muted">(<%= @minimum_password_length %> caracteres minimo)</em>
+            <!-- <em class="text-muted">(<%= @minimum_password_length %> caracteres minimo)</em> -->
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+            <%= f.password_field :password, placeholder:"Mímimo seis letricas", autocomplete: "new-password", class:"form-control" %>
           </div>
 
           <div class="form-group">
               <%= f.label :password_confirmation, "Confirmar contraseña" %><br />
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+              <%= f.password_field :password_confirmation, placeholder:"Mímimo seis letricas", autocomplete: "new-password", class:"form-control" %>
           </div>
 
           <% if devise_mapping.rememberable? %>

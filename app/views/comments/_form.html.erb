@@ -4,18 +4,16 @@
      <%= image_tag gravatar_url(current_user.email, 60), alt: "", class:"rounded-circle mx-auto d-block" %>
     </div>
     <div class="col-md-10 p-0">
-      <%= form_for ([@post, @comment]) do |f| %>
+      <%= form_for [@post, @comment], remote: true do |f| %>
       
       <!--
       collection.build(attributes = {}, …) Returns one or more new objects of the collection type that have been instantiated with attributes and linked to this object
       through a foreign key, but have not yet been saved. Note: This only works if an associated object already exists, not if it‘s nil!
       -->
       
-      <!-- <%= render"posts/error_comment", :target => @comment %> -->
-      
       <%= render "posts/error_comment", :target => @comment %>
       
-      <%= f.text_area :content, class:"form-control", placeholder: "Escribir comentario..." %>
+      <%= f.text_area :content, class:"form-control", id:"comment-box", placeholder: "Escribir comentario..." %>
       <br>
       <%= f.submit "Comentar!", class:"btn btn-success float-right"%>
       <% end %>
